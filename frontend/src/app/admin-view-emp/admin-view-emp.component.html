@@ -1,0 +1,52 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Admin View Receptionist</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <div class="col-md-6">
+                <a class="btn btn-primary" routerLink="/admin_add_emp">ADD RECEPTIONIST</a>
+            </div>
+            <div class="col-md-12 mt-5">
+               @if(empdetail.length==0){
+                    <h1>No Record Found</h1>
+               }@else{
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>EMPLOYEE ID</th>
+                                <th>EMPLOYEE NAME</th>
+                                <th>ADDRESS</th>
+                                <th>CITY</th>
+                                <th>MOBILE NO</th>
+                                <th>EMAIL ID</th>
+                                <th>UPDATE</th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(emp of empdetail;track emp.emp_id){
+                                <tr>
+                                    <td>{{emp.emp_id}}</td>
+                                    <td>{{emp.emp_name}}</td>
+                                    <td>{{emp.address}}</td>
+                                    <td>{{emp.city}}</td>
+                                    <td>{{emp.mobile_no}}</td>
+                                    <td>{{emp.email_id}}</td>
+                                    <td><a class="btn btn-primary" routerLink="/admin_update_emp/{{emp.emp_id}}">UPDATE</a></td>
+                                    <td><a class="btn btn-primary" (click)="ondelete(emp.emp_id)">DELETE</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+               }
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,58 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>View Appointment Status</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+           
+            <div class="col-md-12 mt-5">
+               @if(appointdetail.length==0){
+                    <h1>No Record Found</h1>
+               }@else{
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>APPOINTMENT ID</th>
+                                <th>APPOINTMENT DATE</th>
+                                <th>SLOT ID</th>
+                                <th>TIME</th>
+                                <th>MEDICAL HISTORY</th>
+                                <th>APPOINTMENT STATUS</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(appoint of appointdetail;track appoint.appoint_id){
+                                <tr>
+                                    <td>{{appoint.appoint_id}}</td>
+                                    <td>{{appoint.appoint_date | date:'dd-MM-yyyy'}}</td>
+                                    <td>{{appoint.slot_id}}</td>
+                                    @for(slot of slotdetail;track slot.slot_id){
+                                        @if(slot.slot_id == appoint.slot_id){
+                                        <td>{{slot.slot_time}}</td>
+                                        }
+                                    }
+                                    <td>{{appoint.medical_history}}</td>
+                                    @if(appoint.appoint_status == "0"){
+                                        <td><b>NEW APPOINTMENT</b></td>
+                                    }@else if(appoint.appoint_status == "1"){
+                                        <td><b>CONFIRM</b></td>
+                                    }@else if(appoint.appoint_status == "2"){
+                                        <td><b>NOT CONFIRM</b></td>
+                                    }
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+               }
+            </div>
+
+        </div>
+    </div>
+</main>

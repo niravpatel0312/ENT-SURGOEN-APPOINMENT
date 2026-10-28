@@ -1,0 +1,62 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Appointment Form</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        
+<form #regisform="ngForm" (submit)="onsubmit(regisform)" novalidate>
+    <div class="row mt-5">
+            <div class="col-md-6">
+                
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Select Appointment Date</label>
+                        <input type="date" class="form-control" name="txtdate" ngModel #txtdate="ngModel" required [(ngModel)]="formattedDate">
+                        @if(txtdate.invalid && (txtdate.dirty || txtdate.touched)){
+                            @if(txtdate.hasError("required")){
+                                <p class="alert alert-danger">Please Select Appointment Date</p>
+                            }
+                        }
+                        
+                    </div>
+                     <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Select Time Slot</label>
+                        <select class="form-select" name="seltimeslot" ngModel #seltimeslot="ngModel" required>
+                            <option value="">Select Time Slot</option>
+                            @for(slot of slotdetail;track slot.slot_id){
+                                <option value="{{slot.slot_id}}">{{slot.slot_time}}</option>   
+                            }
+                        </select>
+                        @if(seltimeslot.invalid && (seltimeslot.dirty || seltimeslot.touched)){
+                            @if(seltimeslot.hasError("required")){
+                                <p class="alert alert-warning">Please Select Time Slot</p>
+                            }
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Medical History</label>
+                        <textarea class="form-control" name="txthistory" ngModel #txthistory="ngModel" required></textarea>
+                         @if(txthistory.invalid && (txthistory.dirty || txthistory.touched)){
+                            @if(txthistory.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Medical History</p>
+                            }
+                        }
+                    </div>
+                     <button type="submit" class="btn btn-primary" [disabled]="!regisform.valid">TAKE APPOINTMENT</button>
+            </div>
+            <div class="col-md-6">
+              
+                    
+                  
+                    
+                   
+                
+            </div>
+
+        </div>
+        </form>
+    </div>
+</main>

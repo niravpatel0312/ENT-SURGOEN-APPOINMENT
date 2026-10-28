@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3f51b5;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ENT Surgeon Booking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    @if(authservice.adminloggedin)
+    {
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/admin_view_emp">View Receptionist</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Reports
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/admin_patient_detail_report">Patient Detail Report</a></li>
+            <li><a class="dropdown-item" routerLink="/admin_confirm_appointment_report">Confirm Appointment Report</a></li>
+            <li><a class="dropdown-item" routerLink="/admin_notconfirm_appointment_report">Not Confirm Appointment Report</a></li>
+           <li><a class="dropdown-item" routerLink="/admin_today_appointment_report">Todays Appointment Report</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" (click)="onlogout()">Logout</a>
+        </li>
+        
+      </ul>
+     
+    </div>
+    }@else if(authservice.emploggedin){
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/emp_view_timeslot">View Time Slots</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/emp_view_new_appointment">New Appointment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/emp_view_patient_profile">View Patient Profile</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Reports
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/emp_patient_detail_report">Patient Detail Report</a></li>
+            <li><a class="dropdown-item" routerLink="/emp_confirm_appointment_report">Confirm Appointment Report</a></li>
+            <li><a class="dropdown-item" routerLink="/emp_notconfirm_appointment_report">Not Confirm Appointment Report</a></li>
+           <li><a class="dropdown-item" routerLink="/emp_today_appointment_report">Todays Appointment Report</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" (click)="onlogout2()">Logout</a>
+        </li>
+        
+      </ul>
+     
+    </div>
+    }@else if(authservice.patientloggedin){
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/patient_take_appointment">Appointement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/patient_view_appointment">Appointment Status</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" (click)="onlogout3()">Logout</a>
+        </li>
+        
+      </ul>
+     
+    </div>
+    }
+    @else{
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/about">About</a>
+        </li>
+        <!--li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li-->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/patient_regis">Registration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+     
+    </div>
+  }
+  </div>
+</nav>

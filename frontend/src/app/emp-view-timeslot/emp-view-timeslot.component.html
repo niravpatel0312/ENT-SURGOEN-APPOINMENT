@@ -1,0 +1,46 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>View Time Slot</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <div class="col-md-6">
+                <a class="btn btn-primary" routerLink="/emp_add_timeslot">ADD TIME SLOT</a>
+            </div>
+            <div class="col-md-12 mt-5">
+               @if(slotdetail.length==0){
+                    <h1>No Record Found</h1>
+               }@else{
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>SLOT ID</th>
+                                <th>SLOT TIME</th>
+                                
+                                <th>UPDATE</th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(slot of slotdetail;track slot.slot_id){
+                                <tr>
+                                    <td>{{slot.slot_id}}</td>
+                                    <td>{{slot.slot_time}}</td>
+                                    
+                                    <td><a class="btn btn-primary" routerLink="/emp_update_timeslot/{{slot.slot_id}}">UPDATE</a></td>
+                                    <td><a class="btn btn-primary" (click)="ondelete(slot.slot_id)">DELETE</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+               }
+            </div>
+
+        </div>
+    </div>
+</main>

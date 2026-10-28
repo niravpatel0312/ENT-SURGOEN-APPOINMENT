@@ -1,0 +1,51 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Patient Wise Profile Detail Report</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+           
+            <div class="col-md-12 mt-5">
+               @if(profiledetail.length==0){
+                    <h1>No Record Found</h1>
+               }@else{
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>PATIENT PROFILE ID</th>
+                                <th>PATIENT NAME</th>
+                                <th>MOBILE NO</th>
+                                <th>MEDICAL HISTORY</th>
+                                <th>PROFILE DATE</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(profile of profiledetail;track profile.profile_id){
+                                <tr>
+                                    <td>{{profile.profile_id}}</td>
+                                    @for(patient of patientdetail;track patient.patient_id){
+                                        @if(patient.patient_id == profile.patient_id){
+                                        <td>{{patient.patient_name}}</td>
+                                           <td>{{patient.mobile_no}}</td>
+                                        }
+                                    }
+                                    <td>{{profile.medical_history}}</td>
+                                    <td>{{profile.profile_date | date:'dd-MM-yyyy'}}</td>
+                                    
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+               }
+            </div>
+
+        </div>
+    </div>
+</main>

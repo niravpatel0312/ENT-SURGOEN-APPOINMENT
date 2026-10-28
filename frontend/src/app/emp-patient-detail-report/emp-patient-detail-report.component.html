@@ -1,0 +1,51 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Patient Detail Report</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+           
+            <div class="col-md-12 mt-5">
+               @if(patientdetail.length==0){
+                    <h1>No Record Found</h1>
+               }@else{
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>PATIENT PROFILE ID</th>
+                                <th>PATIENT NAME</th>
+                                <th>MOBILE NO</th>
+                                <th>MEDICAL HISTORY</th>
+                                <th>PROFILE DATE</th>
+                                <th>UPDATE</th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(patient of patientdetail;track patient.patient_id){
+                                <tr>
+                                    <td>{{patient.patient_id}}</td>
+                                    <td>{{patient.patient_name}}</td>
+                                    <td>{{patient.address}}</td>
+                                    <td>{{patient.city}}</td>
+                                    <td>{{patient.mobile_no}}</td>
+                                    <td>{{patient.email_id}}</td>
+                                    
+                                    
+                                    <td><a class="btn btn-primary" routerLink="/emp_view_patientwise_profile/{{patient.patient_id}}">VIEW PATIENT PROFILE</a></td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+               }
+            </div>
+
+        </div>
+    </div>
+</main>

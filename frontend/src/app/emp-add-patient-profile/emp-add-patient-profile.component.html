@@ -1,0 +1,53 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Add Patient Profile</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+
+        <form #regisform="ngForm" (submit)="onsubmit(regisform)" novalidate>
+            <div class="row mt-5">
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Select Patient</label>
+                        <select class="form-select" name="selpatient" ngModel #selpatient="ngModel" required>
+                            <option value="">Select Patient</option>
+                            @for(patient of patientdetail;track patient.patient_id){
+                            <option value="{{patient.patient_id}}">{{patient.patient_name}}</option>
+                            }
+                        </select>
+                        @if(selpatient.invalid && (selpatient.dirty || selpatient.touched)){
+                        @if(selpatient.hasError("required")){
+                        <p class="alert alert-warning">Please Select Patient</p>
+                        }
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Old Medical History</label>
+                        <textarea class="form-control" name="txthistory" ngModel #txthistory="ngModel"
+                            required></textarea>
+                        @if(txthistory.invalid && (txthistory.dirty || txthistory.touched)){
+                        @if(txthistory.hasError("required")){
+                        <p class="alert alert-warning">Please Enter Old Medical History</p>
+                        }
+                        }
+                    </div>
+                   
+                    <button type="submit" class="btn " [disabled]="!regisform.valid"
+                        style="background-color: #00bcd4;">SAVE</button>
+                </div>
+                <div class="col-md-6">
+
+
+
+                 
+                </div>
+
+            </div>
+        </form>
+    </div>
+</main>

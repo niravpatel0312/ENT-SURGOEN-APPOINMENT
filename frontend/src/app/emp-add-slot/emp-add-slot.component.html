@@ -1,0 +1,42 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Add Slot Detail</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        
+<form #regisform="ngForm" (submit)="onsubmit(regisform)" novalidate>
+    <div class="row mt-5">
+            <div class="col-md-6">
+                
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Slot</label>
+                        <input type="text" class="form-control" name="txtslot" ngModel #txtslot="ngModel" required  minlength="2">
+                        @if(txtslot.invalid && (txtslot.dirty || txtslot.touched)){
+                            @if(txtslot.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Slot Detail</p>
+                            }@else if(txtslot.hasError("minlength")){
+                                <p class="alert alert-danger">Please Enter Proper Slot Detail</p>
+                            }
+                        }
+                        
+                    </div>
+                                        <button type="submit" class="btn btn-primary" [disabled]="!regisform.valid">SAVE</button>
+            </div>
+            <div class="col-md-6">
+              
+                    
+                  
+
+                    
+
+                
+            </div>
+
+        </div>
+        </form>
+    </div>
+</main>

@@ -1,0 +1,100 @@
+<main>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center" style="color: #3f51b5;">
+                <h1>Admin Update Receptionist</h1>
+                <h4>Empowering Your Senses, Enhancing Your Life</h4>
+            </div>
+        </div>
+        
+<form #regisform="ngForm" (submit)="onsubmit(regisform)" novalidate>
+    <div class="row mt-5">
+            <div class="col-md-6">
+                
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Name</label>
+                        <input type="text" class="form-control" name="txtname" ngModel #txtname="ngModel" required pattern="[a-zA-Z ]+" minlength="2" [(ngModel)]="empdetail.emp_name">
+                        @if(txtname.invalid && (txtname.dirty || txtname.touched)){
+                            @if(txtname.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Receptionist Name</p>
+                            }@else if(txtname.hasError("pattern")){
+                                <p class="alert alert-danger">Please Enter Only Alphabets in Receptionist Name</p>
+                            }@else if(txtname.hasError("minlength")){
+                                <p class="alert alert-danger">Please Enter More Than 2 Characters in Receptionist Name</p>
+                            }
+                        }
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Address</label>
+                        <textarea class="form-control" name="txtadd" ngModel #txtadd="ngModel" required [(ngModel)]="empdetail.address"></textarea>
+                         @if(txtadd.invalid && (txtadd.dirty || txtadd.touched)){
+                            @if(txtadd.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Receptionist Address</p>
+                            }
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter City</label>
+                        <input type="text" class="form-control" name="txtcity" ngModel #txtcity="ngModel" required pattern="[a-zA-Z ]+" minlength="2" [(ngModel)]="empdetail.city">
+                        @if(txtcity.invalid && (txtcity.dirty || txtcity.touched)){
+                            @if(txtcity.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Receptionist City Name</p>
+                            }@else if(txtcity.hasError("pattern")){
+                                <p class="alert alert-danger">Please Enter Only Alphabets in Receptionist City Name</p>
+                            }@else if(txtcity.hasError("minlength")){
+                                <p class="alert alert-danger">Please Enter More Than 2 Characters in Receptionist City Name</p>
+                            }
+                        }
+                    </div>
+                    
+            </div>
+            <div class="col-md-6">
+              
+                    
+                  
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Mobile No</label>
+                        <input type="text" class="form-control" name="txtmno" ngModel #txtmno="ngModel" required pattern="[0-9]+" minlength="10" maxlength="10" [(ngModel)]="empdetail.mobile_no">
+                           @if(txtmno.invalid && (txtmno.dirty || txtmno.touched)){
+                            @if(txtmno.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Receptionist Mobile No</p>
+                            }@else if(txtmno.hasError("pattern")){
+                                <p class="alert alert-danger">Please Enter Only Digits in Receptionist Mobile No</p>
+                            }@else if(txtmno.hasError("minlength")){
+                                <p class="alert alert-danger">Please Enter Receptionist Mobile No 10 Digit Long</p>
+                            }
+                        }                     
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Enter Email</label>
+                        <input type="email" class="form-control" name="txtemail" ngModel #txtemail="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9._%+-]+\.[a-z]{2,4}$" [(ngModel)]="empdetail.email_id">
+                        @if(txtemail.invalid && (txtemail.dirty || txtemail.touched)){
+                            @if(txtemail.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Receptionist Email Id</p>
+                            }@else if(txtemail.hasError("pattern")){
+                                <p class="alert alert-danger">Please Enter Valid Email Id</p>
+                            }
+                        }    
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="txtpwd" ngModel #txtpwd="ngModel" required minlength="6" maxlength="8" [(ngModel)]="empdetail.pwd">
+                         @if(txtpwd.invalid && (txtpwd.dirty || txtpwd.touched)){
+                            @if(txtpwd.hasError("required")){
+                                <p class="alert alert-danger">Please Enter Receptionist Password</p>
+                            }@else if(txtpwd.hasError("minlength")){
+                                <p class="alert alert-danger">Please Enter Receptionist Password More than 6 Characters</p>
+                            }
+                        }
+                    </div>
+                    <input type="hidden" name="txteid" ngModel #txteid="ngModel" [(ngModel)]="empdetail.emp_id">
+                    <button type="submit" class="btn btn-primary" [disabled]="!regisform.valid">UPDATE</button>
+                
+            </div>
+
+        </div>
+        </form>
+    </div>
+</main>
